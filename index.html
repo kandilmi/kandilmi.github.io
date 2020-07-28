@@ -1,54 +1,39 @@
 <meta charset="utf-8">
 <html>
-
+<div style="text-align: center;font-size:8vw;font-family: Verdana">
 <head>Bugün kandil mi?</head>
+</div>
+<div style="text-align: center;font-size:5vw;font-family: Verdana">
 <p id="demo">Değil.</p>
+</div>
 <script>
-    var iskandil = false;
-    var dates = [];
-    var names = [];
-    dates.push(setD("5","23","2020",new Date()));
-    names.push("Bugün Ramazan Bayramı Arifesi.");
-    dates.push(setD("5","24","2020",new Date()));
-    names.push("Bugün Ramazan Bayramı 1. Gün. Bayramınız mübarek olsun  .");
-    dates.push(setD("5","25","2020",new Date()));
-    names.push("Bugün Ramazan Bayramı 2. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("5","26","2020",new Date()));
-    names.push("Bugün Ramazan Bayramı 3. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("07","30","2020",new Date()));
-    names.push("Bugün Kurban Bayramı Arifesi.");
-    dates.push(setD("07","31","2020",new Date()));
-    names.push("Bugün Kurban  Bayramı 1. Gün. Bayramınız mübarek olsun  .");
-    dates.push(setD("08","01","2020",new Date()));
-    names.push("Bugün Kurban  Bayramı 2. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("08","02","2020",new Date()));
-    names.push("Bugün Kurban  Bayramı 3. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("08","03","2020",new Date()));
-    names.push("Bugün Kurban  Bayramı 4. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("08","29","2020",new Date()));
-    names.push("Bugün Aşure Günü.");
-    dates.push(setD("10","28","2020",new Date()));
-    names.push("Evet. Bugün Mevlid Kandili. Kandiliniz mübarek olsun.");
+    var calender = new Map();
+    calender.set(setD("07","30","2020",new Date()),"Bugün Kurban Bayramı Arifesi.");
+    calender.set(setD("07","31","2020",new Date()),"Bugün Kurban  Bayramı 1. Gün. Bayramınız mübarek olsun.");
+    calender.set(setD("08","01","2020",new Date()),"Bugün Kurban  Bayramı 2. Gün. Bayramınız mübarek olsun.");
+    calender.set(setD("08","02","2020",new Date()),"Bugün Kurban  Bayramı 3. Gün. Bayramınız mübarek olsun.");
+    calender.set(setD("08","03","2020",new Date()),"Bugün Kurban  Bayramı 4. Gün. Bayramınız mübarek olsun.");
+    calender.set(setD("08","29","2020",new Date()),"Bugün Aşure Günü.");
+    calender.set(setD("10","28","2020",new Date()),"Bugün Mevlid Kandili. Kandiliniz mübarek olsun.");
+    calender.set(setD("07","28","2020",new Date()),"test");
+
+
     var today = new Date();
     var theday= new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
-    today = setD(mm,dd,yyyy,today);
-    //document.getElementById("demo").innerHTML = today.toDateString();
+    today = setD(mm,dd,yyyy,today)
+    checkDate(today);
     theday = "7" + '/'+ "1" + '/' + "2020";
-    for(let i=0; i<dates.length;i++){
-        if(isSame(today,dates[i])){
-            document.getElementById("demo").innerHTML = "Evet "+names[i];
-            iskandil = true;
-            break;
-        }
-    }
-    for(let i=0; i<dates.length;i++){
-        if(isSame(today,dates[i])){
-            document.getElementById("demo").innerHTML = "Evet "+names[i];
-            break;
+
+
+    function checkDate(date) {
+        if (calender.has(date)) {
+            document.getElementById("demo").innerHTML = calender.get(date);
+        } else {
+            return false;
         }
     }
     function isSame(date1,date2) {
