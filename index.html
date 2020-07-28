@@ -7,14 +7,28 @@
     var iskandil = false;
     var dates = [];
     var names = [];
-    dates.push(setD("05","23","2020",new Date()));
+    dates.push(setD("5","23","2020",new Date()));
     names.push("Bugün Ramazan Bayramı Arifesi.");
-    dates.push(setD("05","24","2020",new Date()));
-    names.push("Bugün Ramazan Bayramı 1. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("05","25","2020",new Date()));
+    dates.push(setD("5","24","2020",new Date()));
+    names.push("Bugün Ramazan Bayramı 1. Gün. Bayramınız mübarek olsun  .");
+    dates.push(setD("5","25","2020",new Date()));
     names.push("Bugün Ramazan Bayramı 2. Gün. Bayramınız mübarek olsun.");
-    dates.push(setD("05","26","2020",new Date()));
+    dates.push(setD("5","26","2020",new Date()));
     names.push("Bugün Ramazan Bayramı 3. Gün. Bayramınız mübarek olsun.");
+    dates.push(setD("07","30","2020",new Date()));
+    names.push("Bugün Kurban Bayramı Arifesi.");
+    dates.push(setD("07","31","2020",new Date()));
+    names.push("Bugün Kurban  Bayramı 1. Gün. Bayramınız mübarek olsun  .");
+    dates.push(setD("08","01","2020",new Date()));
+    names.push("Bugün Kurban  Bayramı 2. Gün. Bayramınız mübarek olsun.");
+    dates.push(setD("08","02","2020",new Date()));
+    names.push("Bugün Kurban  Bayramı 3. Gün. Bayramınız mübarek olsun.");
+    dates.push(setD("08","03","2020",new Date()));
+    names.push("Bugün Kurban  Bayramı 4. Gün. Bayramınız mübarek olsun.");
+    dates.push(setD("08","29","2020",new Date()));
+    names.push("Bugün Aşure Günü.");
+    dates.push(setD("10","28","2020",new Date()));
+    names.push("Evet. Bugün Mevlid Kandili. Kandiliniz mübarek olsun.");
     var today = new Date();
     var theday= new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -22,23 +36,25 @@
     var yyyy = today.getFullYear();
 
     today = setD(mm,dd,yyyy,today);
-    theday = "05" + '/'+ "24" + '/' + "2020";
+    //document.getElementById("demo").innerHTML = today.toDateString();
+    theday = "7" + '/'+ "1" + '/' + "2020";
     for(let i=0; i<dates.length;i++){
-        if(isSame(theday,dates[i])){
+        if(isSame(today,dates[i])){
             document.getElementById("demo").innerHTML = "Evet "+names[i];
             iskandil = true;
             break;
         }
     }
     for(let i=0; i<dates.length;i++){
-        if(isSame(theday,dates[i])){
+        if(isSame(today,dates[i])){
             document.getElementById("demo").innerHTML = "Evet "+names[i];
             break;
         }
     }
     function isSame(date1,date2) {
-        console.log("checked"+date1+date2)
+        console.log("checked"+date1+date2);
         if(date1==date2){
+            console.log("true");
             return true;
         }
         return false;
