@@ -1,0 +1,54 @@
+<meta charset="utf-8">
+<html>
+
+<head>Bugün kandil mi?</head>
+<p id="demo">Değil.</p>
+<script>
+    var iskandil = false;
+    var dates = [];
+    var names = [];
+    dates.push(setD("05","23","2020",new Date()));
+    names.push("Bugün Ramazan Bayramı Arifesi.");
+    dates.push(setD("05","24","2020",new Date()));
+    names.push("Bugün Ramazan Bayramı 1. Gün. Bayramınız mübarek olsun.");
+    dates.push(setD("05","25","2020",new Date()));
+    names.push("Bugün Ramazan Bayramı 2. Gün. Bayramınız mübarek olsun.");
+    dates.push(setD("05","26","2020",new Date()));
+    names.push("Bugün Ramazan Bayramı 3. Gün. Bayramınız mübarek olsun.");
+    var today = new Date();
+    var theday= new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = setD(mm,dd,yyyy,today);
+    theday = "05" + '/'+ "24" + '/' + "2020";
+    for(let i=0; i<dates.length;i++){
+        if(isSame(theday,dates[i])){
+            document.getElementById("demo").innerHTML = "Evet "+names[i];
+            iskandil = true;
+            break;
+        }
+    }
+    for(let i=0; i<dates.length;i++){
+        if(isSame(theday,dates[i])){
+            document.getElementById("demo").innerHTML = "Evet "+names[i];
+            break;
+        }
+    }
+    function isSame(date1,date2) {
+        console.log("checked"+date1+date2)
+        if(date1==date2){
+            return true;
+        }
+        return false;
+    }
+
+    function setD(m,d,y,day) {
+         day = m + '/' + d + '/' + y;
+         return day;
+    }
+</script>
+
+
+</html>
